@@ -1,9 +1,10 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 import os
 import sys
+from dotenv import load_dotenv
 from fastapi import FastAPI
+
+
+load_dotenv()
 
 
 def require_env(name: str) -> str:
@@ -34,6 +35,14 @@ def root():
 def health_check():
     return {
         "status": "ok",
+        "version": "1.0.0",
+        "environment": APP_ENV
+    }
+
+
+@app.get("/version")
+def version():
+    return {
         "version": "1.0.0",
         "environment": APP_ENV
     }
