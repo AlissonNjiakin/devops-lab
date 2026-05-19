@@ -22,4 +22,4 @@ def test_root_returns_welcome_message():
 def test_health_check_wrong_assertion():
     response = client.get("/health")
     assert response.status_code == 200
-    assert response.json()["status"] == "broken"
+    assert response.json()["status"] == "ok"
